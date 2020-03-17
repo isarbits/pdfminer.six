@@ -80,7 +80,7 @@ def extract_text_to_fp(inf, outfp, output_type='text', codec='utf-8',
                                   maxpages=maxpages,
                                   password=password,
                                   caching=not disable_caching,
-                                  check_extractable=True):
+                                  check_extractable=False):
         page.rotate = (page.rotate + rotation) % 360
         interpreter.process_page(page)
 
@@ -116,7 +116,7 @@ def extract_text(pdf_file, password='', page_numbers=None, maxpages=0,
                 maxpages=maxpages,
                 password=password,
                 caching=caching,
-                check_extractable=True,
+                check_extractable=False,
         ):
             interpreter.process_page(page)
 
