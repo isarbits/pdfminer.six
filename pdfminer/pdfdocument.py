@@ -454,6 +454,8 @@ class PDFStandardSecurityHandlerV4(PDFStandardSecurityHandler):
               + struct.pack('<L', genno)[:2] + b'sAlT'
         hash = md5.md5(key)
         key = hash.digest()[:min(len(key), 16)]
+        length = 16 - (len(data) % 16)
+        data += bytes([length])*length
         return AES.new(key, mode=AES.MODE_CBC, IV=data[:16]).decrypt(data[16:])
 
 
